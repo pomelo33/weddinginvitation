@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>婚礼电子请柬 · 实时设计器</title>
+  <link rel="stylesheet" href="styles.css?v=20260820-8" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">WEDDING INVITATION DESIGNER</div>
+        <h1>婚礼电子请柬 <span>实时设计与导出</span></h1>
+      </div>
+      <div class="top-actions">
+        <button class="ghost-btn" id="resetBtn" type="button" title="恢复默认文字">↺ 恢复默认</button>
+        <button class="primary-btn" id="exportBtn" type="button" title="按实时预览导出">⇩ 导出请柬</button>
+      </div>
+    </header>
+
+    <section class="workspace">
+      <aside class="panel controls-panel">
+        <div class="panel-heading"><span>内容编辑</span><span class="status-dot">实时预览</span></div>
+        <div class="field-grid">
+          <label class="wide">邀请对象<select id="audienceProfile">
+            <option value="friends">朋友 / 同学</option>
+            <option value="parents">父母亲友</option>
+            <option value="elders">长辈 / 尊长</option>
+            <option value="colleagues">同事 / 领导</option>
+            <option value="custom">自定义对象</option>
+          </select></label>
+          <label class="wide">受邀人<input id="recipient" placeholder="例如：张三一家 / 王老师" maxlength="24" /></label>
+          <label class="wide">称谓<input id="inviteGreeting" value="诚邀好友相聚" maxlength="24" /></label>
+          <label class="wide">副标题<input id="welcomeLine" value="一起见证幸福时刻" maxlength="30" /></label>
+          <label>新郎<input id="groom" value="新郎" maxlength="16" /></label>
+          <label>新娘<input id="bride" value="新娘" maxlength="16" /></label>
+          <label class="wide">日期<input id="date" value="2026年10月02日" maxlength="24" /></label>
+          <label>农历<input id="lunar" value="农历X月XX" maxlength="16" /></label>
+          <label class="wide">地点<input id="location" value="XXXXXXXX" maxlength="28" /></label>
+          <label class="wide">寄语<textarea id="message" rows="3" maxlength="90">良辰已定，幸福将至。诚邀你来参加我们的婚礼，与我们分享喜悦，共同见证人生中珍贵而美好的时刻。</textarea></label>
+          <label class="wide">落款<input id="signoff" value="新郎、新娘 敬邀" maxlength="36" /></label>
+        </div>
+
+        <div class="divider"></div>
+        <div class="section-label">照片</div>
+        <label class="upload-box" for="photoInput">
+          <span class="upload-icon">＋</span>
+          <span><b>上传新人照片</b><small>支持 JPG / PNG / WebP，最大 20MB</small></span>
+          <input id="photoInput" type="file" accept="image/png,image/jpeg,image/webp" />
+        </label>
+        <button class="text-btn" id="clearPhoto" type="button">移除照片，恢复留白相框</button>
+
+        <div class="divider"></div>
+        <div class="section-label">导出设置</div>
+        <label class="wide">图片格式<select id="exportFormat">
+          <option value="image/webp" selected>WebP · 推荐，清晰且体积小</option>
+          <option value="image/jpeg">JPEG · 兼容性最好</option>
+          <option value="image/png">PNG · 无损，文件较大</option>
+        </select></label>
+        <label class="wide" id="qualityField">图片质量<select id="exportQuality">
+          <option value="0.95">高质量 · 约 95%</option>
+          <option value="0.86" selected>推荐 · 约 86%</option>
+          <option value="0.74">轻量 · 约 74%</option>
+          <option value="1">最高 · 100%</option>
+        </select></label>
+        <p class="hint" id="exportInfo">按实时预览尺寸直接导出，不放大、不改变布局。推荐 WebP 86%，兼顾清晰度与文件大小。</p>
+      </aside>
+
+      <section class="preview-area">
+        <div class="preview-toolbar"><span>实时成品预览</span><span class="resolution" id="resolutionText">导出：1255 × 1080 WebP</span></div>
+        <div class="canvas-wrap"><canvas id="inviteCanvas" width="1255" height="1080"></canvas></div>
+        <div class="preview-foot"><span>模板：原创重绘 · 婚礼红金版</span><span id="photoStatus" aria-live="polite">未上传照片</span></div>
+      </section>
+    </section>
+  </main>
+  <script src="app.js?v=20260820-8"></script>
+</body>
+</html>
